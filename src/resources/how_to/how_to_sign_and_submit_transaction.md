@@ -3,7 +3,7 @@
 To sign and submit transaction with a wallet, you can use the `signAndSubmitTransaction` function that exposed from the `useWallet()` provider that included in the `AptosWalletAdapterProvider`.
 This method will use the current connected wallet to sign and submit transaction to the Aptos configured network.
 
-1. Make sure you have `@aptos-labs/wallet-adapter-react` installed.
+1. Make sure you have `@aptos-labs/wallet-adapter-react@latest` installed.
 
 ```bash
 npm install @aptos-labs/wallet-adapter-react@latest

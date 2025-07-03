@@ -4,10 +4,10 @@ The admin account for a dapp on Aptos, is used to publish the Move contract to t
 
 ### How to Generate a new Keypair for an admin account
 
-1. Import the `Account` module from the '@aptos-labs/ts-sdk' package, and use it to generate a new keypair.
+1. Use the aptos CLI to generate a new local account
 
-```
-aptos move init --network <dapp-network>
+```bash
+aptos init --network <dapp-network>
 ```
 
 2. Store the private key and the account address

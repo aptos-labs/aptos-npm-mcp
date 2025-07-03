@@ -12,7 +12,7 @@ If wallet is already connected, the button would display the connected account a
 
 ### Usage
 
-Make sure you have `@aptos-labs/wallet-adapter-react` installed
+Make sure you have `@aptos-labs/wallet-adapter-react@latest` installed
 
 ```bash
 npm install @aptos-labs/wallet-adapter-ant-design@latest

@@ -4,7 +4,7 @@ Aptos provides a React Provider and Context for connecting Aptos wallets to your
 
 This provides a standard interface for using all Aptos wallets, and allows new wallets to easily be supported just by updating your React Wallet Adapter dependency version.
 
-1. Install `@aptos-labs/wallet-adapter-react`.
+1. Install `@aptos-labs/wallet-adapter-react@latest`.
 
 ```bash
 npm install @aptos-labs/wallet-adapter-react@latest
