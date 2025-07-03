@@ -128,6 +128,7 @@ async function main() {
           "how_to_add_wallet_connection",
           "how_to_integrate_wallet_selector_ui",
           "how_to_sign_and_submit_transaction",
+          "how_to_integrate_gas_station",
         ],
         wallet: [
           "how_to_add_wallet_connection",
@@ -137,6 +138,7 @@ async function main() {
           "how_to_add_wallet_connection",
           "how_to_integrate_wallet_selector_ui",
           "how_to_sign_and_submit_transaction",
+          "how_to_integrate_gas_station",
         ],
         ui: [
           "how_to_integrate_wallet_selector_ui",
@@ -162,6 +164,13 @@ async function main() {
         setup: ["how_to_write_an_aptos_dapp", "how_to_configure_admin_account"],
         "getting started": ["how_to_write_an_aptos_dapp"],
         overview: ["how_to_write_an_aptos_dapp"],
+        // Gas Station context mappings
+        gas: ["how_to_integrate_gas_station"],
+        sponsor: ["how_to_integrate_gas_station"],
+        sponsored: ["how_to_integrate_gas_station"],
+        station: ["how_to_integrate_gas_station"],
+        gasless: ["how_to_integrate_gas_station"],
+        fee: ["how_to_integrate_gas_station"],
       };
 
       // Find matching resources based on context

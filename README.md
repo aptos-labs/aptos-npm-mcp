@@ -60,6 +60,67 @@ git clone git@github.com:aptos-labs/aptos-npm-mcp.git
          Help me build a smart contract for a todo list dapp on Aptos. Build the smart contract to handle the dapp logic. Also, help with with deploying the contract.
          ```
 
+## Contributing Resources
+
+Want to add new development resources to the MCP server? Follow these steps using the Gas Station integration as an example:
+
+### 1. Add Your Resource File
+
+Place your markdown guide in `src/resources/` following the "How to..." naming pattern:
+
+```
+src/resources/how_to_integrate_gas_station.md
+```
+
+The MCP server automatically discovers all `.md` files in this directory.
+
+### 2. Update Context Mappings
+
+To make your resource discoverable through intelligent queries, add relevant keywords to `src/server.ts`.
+
+Find the `contextMappings` object (around line 110) and add your mappings:
+
+```typescript
+const contextMappings = {
+  // ... existing mappings ...
+  
+  // Gas Station example - add keywords users might search for
+  "gas": ["how_to_integrate_gas_station"],
+  "sponsor": ["how_to_integrate_gas_station"],
+  "sponsored": ["how_to_integrate_gas_station"],
+  "station": ["how_to_integrate_gas_station"],
+  "gasless": ["how_to_integrate_gas_station"],
+  
+  // Also add to existing categories where relevant
+  dapp: [
+    // ... existing resources ...
+    "how_to_integrate_gas_station", // Add here
+  ],
+  frontend: [
+    // ... existing resources ...
+    "how_to_integrate_gas_station", // And here too
+  ],
+};
+```
+
+### 3. Restart the MCP Server
+
+After updating the code, restart the MCP server in Cursor:
+
+1. Open Cursor Settings: `Cursor → Settings → Cursor Settings`
+2. Navigate to Tools and Integrations (MCP section)
+3. Toggle the on/off switch to reload the MCP server
+4. Verify green status indicator shows the server is running
+
+### 4. Test Your Integration
+
+Test with queries like:
+- "I need help with gas station"
+- "How to implement sponsored transactions"
+- "Show me gasless transaction setup"
+
+Your resource should now be discoverable by AI agents through both direct queries and intelligent context matching.
+
 ## Development
 
 To get started, clone the repository and install the dependencies.

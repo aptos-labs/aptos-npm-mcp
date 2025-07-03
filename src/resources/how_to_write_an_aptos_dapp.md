@@ -5,6 +5,7 @@ This comprehensive guideline provides a step-by-step checklist for developers to
 - Dapp Configurations Selection
 
   - Choose target Aptos network (devnet or testnet for testing, mainnet for production).
+  - For dApps that use Aptos Build's Gas Station or No-Code-Indexing for the frontend, contracts will need to be deploy to testnet or mainnet.
   - Configure an Admin Account for smart contract publishing. Provide a known account private key and account address or generate a new account key pair.
   - Use environment variables to store the dapp configuration.
 
