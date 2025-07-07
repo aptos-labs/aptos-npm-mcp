@@ -53,7 +53,7 @@ async function main() {
   server.addTool({
     name: "get_aptos_development_resources",
     description:
-      "Intelligently retrieves relevant Aptos development resources based on the development context or specific needs. This tool can find documentation for smart contract development, frontend integration, wallet connection, deployment, and more. Use this when you need guidance on any aspect of Aptos dApp development - the tool will automatically identify and return the most relevant resources.",
+      "Intelligently retrieves relevant Aptos development resources based on the development context or specific needs. This tool can find documentation for smart contract development, frontend integration, wallet connection, deployment, no-code indexing, and more. Use this when you need guidance on any aspect of Aptos dApp development - the tool will automatically identify and return the most relevant resources.",
     parameters: z.object({
       context: z
         .string()
@@ -162,6 +162,21 @@ async function main() {
         setup: ["how_to_write_an_aptos_dapp", "how_to_configure_admin_account"],
         "getting started": ["how_to_write_an_aptos_dapp"],
         overview: ["how_to_write_an_aptos_dapp"],
+        // No-Code Indexing context mappings
+        indexing: ["how_to_set_up_no_code_indexing"],
+        "no-code": ["how_to_set_up_no_code_indexing"],
+        "no code": ["how_to_set_up_no_code_indexing"],
+        nocode: ["how_to_set_up_no_code_indexing"],
+        processor: ["how_to_set_up_no_code_indexing"],
+        hasura: ["how_to_set_up_no_code_indexing"],
+        graphql: ["how_to_set_up_no_code_indexing"],
+        events: ["how_to_set_up_no_code_indexing"],
+        "real-time": ["how_to_set_up_no_code_indexing"],
+        realtime: ["how_to_set_up_no_code_indexing"],
+        data: ["how_to_set_up_no_code_indexing"],
+        query: ["how_to_set_up_no_code_indexing"],
+        database: ["how_to_set_up_no_code_indexing"],
+        table: ["how_to_set_up_no_code_indexing"],
       };
 
       // Find matching resources based on context
