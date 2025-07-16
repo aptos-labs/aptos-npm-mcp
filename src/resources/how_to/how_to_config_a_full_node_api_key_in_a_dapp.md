@@ -73,7 +73,7 @@ const aptos = new Aptos(
   new AptosConfig({
     network: NETWORK,
     clientConfig: { API_KEY: APTOS_API_KEY },
-  })
+  }),
 );
 ```
 

@@ -1,6 +1,6 @@
 # How to Configure An Admin Account
 
-The admin account for a dapp on Aptos, is used to publish the Move contract to the Aptos configured chain. To setup an admin account you can either generate a new keypair and then store it in a secret place like `.env` file, or use an existing private key that is known to you.
+The admin account for a dapp on Aptos is used to publish the Move contract to the Aptos configured chain. To set up an admin account you can either generate a new keypair and then store it in a secret place like `.env` file, or use an existing private key known to you.
 
 ### How to Generate a new Keypair for an admin account
 
@@ -20,4 +20,4 @@ See [How to Fund An Account On Aptos](./how_to_fund_an_account_on_aptos.md)
 
 ### How to Use a Known admin account
 
-If you have your own admin account you would like to use, past its key pair information to the dapp `.env` file. Make sure the account is funded.
+If you have your own admin account that you would like to use, paste its key pair information to the dapp `.env` file. Make sure the account is funded.

@@ -49,4 +49,4 @@ const { account, connected, wallet, changeNetwork } = useWallet();
 
 3. Integrate a Wallet Selector UI
 
-See the [how_to_integrate_wallet_selector_ui .md file](./how_to_integrate_wallet_selector_ui.md)
+See the [how_to_integrate_wallet_selector_ui.md file](./how_to_integrate_wallet_selector_ui.md)

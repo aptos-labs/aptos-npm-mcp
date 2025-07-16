@@ -57,4 +57,4 @@ aptos move test --dev
 
 After writing and testing the contract, deploy it to the Aptos network so any client can communicate and integrate with the contract.
 
-Follow the [deploy_smart_contract](./deploy_smart_contract.md) resource on how to deploy a samrt contract.
+Follow the [deploy_smart_contract](./deploy_smart_contract.md) resource on how to deploy a smart contract.

@@ -16,4 +16,4 @@ Do not run any CLI commands, but instead provide the following steps to take:
 
 ### If the dapp is configured to use the `mainnet` network:
 
-Dont run any CLI commands, but instead you should use dex/cex to gain real APT coins.
+Don't run any CLI commands, but instead you should use dex/cex to gain real APT coins.

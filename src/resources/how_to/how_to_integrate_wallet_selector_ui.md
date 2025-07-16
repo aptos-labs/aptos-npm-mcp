@@ -2,13 +2,13 @@
 
 The Wallet Adapter repository provides several UI packages to simplify allowing users to connect and select a wallet.
 
-For UI components that work out of the box, but are less customizable, choose one of the optiona below.
+For UI components that work out of the box, but are less customizable, choose one of the options below.
 
 ## Ant Design
 
 Package for wallet selector modal using Ant Design. Includes a wallet connect button when clicked, opens up a wallet select modal.
 
-If wallet is already connected, the button would display the connected account address truncated (i.e 0x123...abc), in that case, clicking the button would disconnect the wallet.
+If the wallet is already connected, the button would display the connected account address truncated (i.e 0x123...abc), in that case, clicking the button would disconnect the wallet.
 
 ### Usage
 
@@ -82,7 +82,7 @@ For example, to override the connect wallet button background color, you can use
 
 Package for wallet selector modal using Material UI. Includes a wallet connect button when clicked, opens up a wallet select modal.
 
-If wallet is already connected, the button would display the connected account address truncated (i.e 0x123...abc), in that case, clicking the button would disconnect the wallet.
+If the wallet is already connected, the button would display the connected account address truncated (i.e., 0x123...abc), in that case, clicking the button would disconnect the wallet.
 
 ### Usage
 

@@ -10,7 +10,7 @@ git clone git@github.com:aptos-labs/aptos-npm-mcp.git
 
 ### Generate a `Build Bot Api Key`
 
-To be able to make [Aptos Build] actions like generate api keys, etc. Follow those instruction to generate a new Bot Api Key to use with the MCP
+To be able to make [Aptos Build] actions like generate api keys, etc. Follow those instructions to generate a new Bot Api Key to use with the MCP
 
 1. Go to [https://build.aptoslabs.com/](https://build.aptoslabs.com/)
 2. Click on your name in the bottom left corner
