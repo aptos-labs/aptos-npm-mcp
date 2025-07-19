@@ -25,7 +25,7 @@ export const WalletProvider = ({ children }: PropsWithChildren) => {
       dappConfig={{
       network: Network.MAINNET,  // The Aptos Network The Dapp Works With
       aptosApiKeys: {
-          <dapp-network>: APTOS_API_KEY_TESNET,
+          <dapp-network>: APTOS_API_KEY,
         }
       }}
       onError={(error) => {
