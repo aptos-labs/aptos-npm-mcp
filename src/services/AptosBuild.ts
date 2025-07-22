@@ -9,7 +9,7 @@ import {
   RecursiveOrgData,
 } from "@aptos-labs/api-gateway-admin-api-client";
 import { config } from "../config.js";
-import { recordTelemetry } from "../utils/telemtry.js";
+import { Context } from "fastmcp";
 
 export class AptosBuild {
   private readonly adminUrl: string;
@@ -190,6 +190,38 @@ export class AptosBuild {
       return apiKey;
     } catch (error) {
       throw new Error(`Failed to create api key: ${String(error)}`);
+    }
+  }
+
+  async deleteApiKey({
+    organization_id,
+    project_id,
+    application_id,
+    api_key_name,
+    context,
+  }: {
+    organization_id: string;
+    project_id: string;
+    application_id: string;
+    api_key_name: string;
+    context: Context<any>;
+  }): Promise<void> {
+    try {
+      const adminApiClient = this.createApiClient({
+        "x-jwt-organization-id": organization_id,
+        "x-jwt-project-id": project_id,
+        "x-jwt-application-id": application_id,
+      });
+      await adminApiClient.mutation([
+        "deleteApiKeyV2",
+        {
+          name: api_key_name,
+        },
+      ]);
+    } catch (error) {
+      context.log.error(`Failed to delete api key: ${JSON.stringify(error)}`);
+
+      throw new Error(`Failed to delete api key: ${error}`);
     }
   }
 }

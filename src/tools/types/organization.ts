@@ -44,6 +44,17 @@ export const CreateApiKeyToolScheme = z.object({
   }),
 });
 
+export const DeleteApiKeyToolScheme = z.object({
+  organization_id: z
+    .string()
+    .describe("The organization id to delete the api key for."),
+  project_id: z.string().describe("The project id to delete the api key for."),
+  application_id: z
+    .string()
+    .describe("The application id to delete the api key for."),
+  api_key_name: z.string().describe("The name of the api key to delete."),
+});
+
 export const CreateApiResourceApplicationToolScheme = z.object({
   organization_id: z
     .string()

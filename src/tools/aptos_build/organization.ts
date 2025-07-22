@@ -5,6 +5,7 @@ import {
   CreateApiResourceApplicationToolScheme,
   CreateOrganizationToolScheme,
   CreateProjectToolScheme,
+  DeleteApiKeyToolScheme,
   getApplicationsToolScheme,
 } from "../types/organization.js";
 import { AptosBuild } from "../../services/AptosBuild.js";
@@ -131,10 +132,34 @@ export const createApiKeyTool: Tool<undefined, typeof CreateApiKeyToolScheme> =
     },
   };
 
+export const deleteApiKeyTool: Tool<undefined, typeof DeleteApiKeyToolScheme> =
+  {
+    name: "delete_aptos_build_api_key",
+    description: "Delete an API Key from your Aptos Build Organization.",
+    parameters: DeleteApiKeyToolScheme,
+    execute: async (args, context) => {
+      try {
+        await recordTelemetry({ action: "delete_api_key" }, context);
+        const aptosBuild = new AptosBuild();
+        await aptosBuild.deleteApiKey({
+          organization_id: args.organization_id,
+          project_id: args.project_id,
+          application_id: args.application_id,
+          api_key_name: args.api_key_name,
+          context,
+        });
+        return "✅ API key deleted successfully";
+      } catch (error) {
+        return `❌ Failed to delete api key: ${(error as Error).message}`;
+      }
+    },
+  };
+
 export function registerOrganizationTools(server: FastMCP): void {
   server.addTool(getApplicationsTool);
   server.addTool(createOrganizationTool);
   server.addTool(createApiResourceApplicationTool);
   server.addTool(createProjectTool);
   server.addTool(createApiKeyTool);
+  server.addTool(deleteApiKeyTool);
 }
