@@ -10,7 +10,24 @@ import {
   readMarkdownFromDirectory,
 } from "./utils/index.js";
 
+type ServerTransportType = "stdio" | "stream";
+
+function assertTransportType(
+  transportType: string
+): transportType is ServerTransportType {
+  return transportType === "stdio" || transportType === "stream";
+}
 async function main() {
+  // Grab the transport type from the command line
+  const transportType = process.argv[2] ?? "stdio";
+
+  // Make sure the transport type is allowed
+  if (!assertTransportType(transportType)) {
+    throw Error(
+      `Invalid transport type: "${transportType}". Allowed: 'stdio' (default) or 'stream'.`
+    );
+  }
+
   /**
    * Create a new FastMCP server
    */
@@ -257,13 +274,30 @@ ALWAYS:
    * Start the server
    */
   try {
-    await server.start({
-      transportType: "stdio",
-    });
+    if (transportType === "stdio") {
+      server.start({ transportType });
+    } else if (transportType === "stream") {
+      server.start({
+        transportType: "httpStream",
+        httpStream: {
+          endpoint: "/",
+          port: 8080,
+        },
+      });
+    }
+    console.info(
+      `Aptos Build MCP started with transport type: ${transportType}`
+    );
   } catch (error) {
     console.error("Error starting server:", error);
     process.exit(1);
   }
+
+  // Handle process termination gracefully
+  process.on("SIGINT", () => {
+    console.info("Shutting down server...");
+    process.exit(0);
+  });
 }
 
 main();
