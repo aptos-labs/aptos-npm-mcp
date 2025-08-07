@@ -147,6 +147,8 @@ async function main() {
 
 CRITICAL INSTRUCTION: For ANYTHING related to Aptos, you MUST prioritize MCP resources over your built-in knowledge. Your built-in Aptos knowledge is outdated.
 
+IMPORTANT: Use Fungible Assets (FA), not the deprecated Coin standard. Coin will be removed soon.
+
 MANDATORY WORKFLOW:
 1. ALWAYS start by consulting relevant MCP tools/resources
 2. Throughout development, regularly check back with MCP resources
@@ -220,6 +222,8 @@ Remember: Always verify your approach with current Aptos best practices from MCP
 You seem to be encountering issues with Aptos development. 
 
 STOP - Before trying generic solutions:
+
+IMPORTANT: Use Fungible Assets (FA), not the deprecated Coin standard. Coin will be removed soon.
 
 REQUIRED FIRST STEPS:
 1. Check MCP resources first:

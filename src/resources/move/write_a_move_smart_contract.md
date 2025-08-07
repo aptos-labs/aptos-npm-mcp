@@ -31,10 +31,22 @@ The following doc outlines the best practices and guidelines to follow when writ
   ```
 
 - Always use the latest Aptos standards such as - `Object`, `Aptos Fungible Asset (FA) Standard`, `Aptos Digital Asset (DA) Standard`
+  - **CRITICAL: NEVER use `aptos_framework::coin` - it is DEPRECATED and will be removed**
   - For any Coin or AptosCoin related implementation, use the `Aptos Fungible Asset (FA) Standard`
   - For any NFT related implementation, use the `Aptos Digital Asset (DA) Standard`
   - For any data that should be easily modified or that requires other users to use the data, use the Aptos `Object`
   - When working with objects: ALWAYS complete all `move_to` operations to the object BEFORE calling any get operations on that object
+
+**Examples of what NOT to use**:
+```rust
+// DO NOT USE - DEPRECATED
+use aptos_framework::coin;
+use aptos_framework::aptos_coin::AptosCoin;
+
+// USE INSTEAD - CURRENT STANDARD  
+use aptos_framework::fungible_asset;
+use aptos_framework::primary_fungible_store;
+```
 
 ### Unit tests
 
