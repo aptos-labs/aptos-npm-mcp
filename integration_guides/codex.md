@@ -2,12 +2,12 @@
 
 1. Install the `codex` package
 
-Install with npm
+###### Install with npm
 ```bash
 npm install -g @openai/codex
 ```
 
-Install with Homebrew
+###### Install with Homebrew
 ```bash
 brew install codex
 ```
