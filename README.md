@@ -21,6 +21,7 @@ To be able to make [Aptos Build](https://build.aptoslabs.com/) actions like mana
 
 - [Cursor](./integration_guides/cursor.md)
 - [Claude Code](./integration_guides/claude_code.md)
+- [Codex](./integration_guides/codex.md)
 
 ### Start vibe coding.
 
