@@ -1,6 +1,6 @@
 import { Tool } from "fastmcp";
 
-import { AptosBuild } from "../../services/AptosBuild.js";
+import { Geomi } from "../../services/Geomi.js";
 import { recordTelemetry } from "../../utils/telemetry.js";
 import {
   CreateProjectToolScheme,
@@ -9,18 +9,18 @@ import {
 } from "../types/organization.js";
 
 /**
- * Tool to create a new Project for your Aptos Build Organization.
+ * Tool to create a new Project for your Geomi Organization.
  */
 export const createProjectTool: Tool<
   undefined,
   typeof CreateProjectToolScheme
 > = {
-  description: "Create a new Project for your Aptos Build Organization.",
+  description: "Create a new Project for your Geomi Organization. Geomi is the essential toolkit for Aptos developers.",
   execute: async (args, context) => {
     try {
       await recordTelemetry({ action: "create_project" }, context);
-      const aptosBuild = new AptosBuild(context);
-      const project = await aptosBuild.createProject({
+      const geomi = new Geomi(context);
+      const project = await geomi.createProject({
         description: args.description,
         organization_id: args.organization_id,
         project_name: args.project_name,
@@ -30,23 +30,23 @@ export const createProjectTool: Tool<
       return `❌ Failed to create project: ${error}`;
     }
   },
-  name: "create_aptos_build_project",
+  name: "create_geomi_project",
   parameters: CreateProjectToolScheme,
 };
 
 /**
- * Tool to update a Project for your Aptos Build Organization.
+ * Tool to update a Project for your Geomi Organization.
  */
 export const updateProjectTool: Tool<
   undefined,
   typeof UpdateProjectToolScheme
 > = {
-  description: "Update a Project for your Aptos Build Organization.",
+  description: "Update a Project for your Geomi Organization. Geomi is the essential toolkit for Aptos developers.",
   execute: async (args, context) => {
     try {
       await recordTelemetry({ action: "update_project" }, context);
-      const aptosBuild = new AptosBuild(context);
-      const project = await aptosBuild.updateProject({
+      const geomi = new Geomi(context);
+      const project = await geomi.updateProject({
         description: args.description ?? "",
         organization_id: args.organization_id,
         project_id: args.project_id,
@@ -57,23 +57,23 @@ export const updateProjectTool: Tool<
       return `❌ Failed to update project: ${error}`;
     }
   },
-  name: "update_aptos_build_project",
+  name: "update_geomi_project",
   parameters: UpdateProjectToolScheme,
 };
 
 /**
- * Tool to delete a Project for your Aptos Build Organization.
+ * Tool to delete a Project for your Geomi Organization.
  */
 export const deleteProjectTool: Tool<
   undefined,
   typeof DeleteProjectToolScheme
 > = {
-  description: "Delete a Project for your Aptos Build Organization.",
+  description: "Delete a Project for your Geomi Organization. Geomi is the essential toolkit for Aptos developers.",
   execute: async (args, context) => {
     try {
       await recordTelemetry({ action: "delete_project" }, context);
-      const aptosBuild = new AptosBuild(context);
-      const response = await aptosBuild.deleteProject({
+      const geomi = new Geomi(context);
+      const response = await geomi.deleteProject({
         organization_id: args.organization_id,
         project_id: args.project_id,
       });
@@ -82,6 +82,7 @@ export const deleteProjectTool: Tool<
       return `❌ Failed to delete project: ${error}`;
     }
   },
-  name: "delete_aptos_build_project",
+  name: "delete_geomi_project",
   parameters: DeleteProjectToolScheme,
 };
+

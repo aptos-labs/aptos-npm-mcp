@@ -9,7 +9,7 @@ It is structured to enforce user validation steps before applying any modificati
 
 ### 🟩 Step 1: Retrieve & Display Available GAS STATION API Keys
 
-1. Fetch the user's Build Organizations, including:
+1. Fetch the user's Geomi Organizations, including:
 
 - Organizations
 - Applications
@@ -102,6 +102,6 @@ import { aptosClient } from "../utils/aptosClient"; // this has our network defi
 - ✅ If mismatched, warn the user and ask for confirmation before proceeding.
 
 ### 🟩 Bonus: Documentation References
-[Build Gas Station Guide](https://build.aptoslabs.com/docs/gas-stations)
+[Geomi Gas Station Guide](https://geomi.dev/docs/gas-stations)
 
 ```

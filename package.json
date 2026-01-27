@@ -38,7 +38,7 @@
     "format": "prettier --write . && eslint --fix ."
   },
   "dependencies": {
-    "@aptos-labs/api-gateway-admin-api-client": "^2.1.0",
+    "@aptos-labs/api-gateway-admin-api-client": "^4.0.0",
     "dotenv": "^16.6.1",
     "fastmcp": "^1.27.3",
     "zod": "^3.24.4"

@@ -8,7 +8,7 @@ const GA_CLIENT_ID = process.env.GA_CLIENT_ID;
 
 // Aptos MCP configuration
 export const config = {
-  aptos_build: {
+  geomi: {
     adminUrl: "https://admin.api.aptoslabs.com/api/rspc",
     botKey: process.env.APTOS_BOT_KEY,
   },

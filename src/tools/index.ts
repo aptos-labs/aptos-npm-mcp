@@ -1,7 +1,7 @@
 import { FastMCP } from "fastmcp";
 
-import { registerAptosBuildTools } from "./aptos_build/index.js";
+import { registerGeomiTools } from "./geomi/index.js";
 
 export function registerTools(server: FastMCP): void {
-  registerAptosBuildTools(server);
+  registerGeomiTools(server);
 }
