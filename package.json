@@ -1,6 +1,6 @@
 {
   "name": "@aptos-labs/aptos-mcp",
-  "version": "0.0.16",
+  "version": "0.0.17",
   "main": "dist/server.js",
   "module": "dist/server.js",
   "bin": {
@@ -28,7 +28,7 @@
     "package.json"
   ],
   "scripts": {
-    "build": "rm -rf dist && tsc && cp -r src/resources dist/",
+    "build": "rm -rf dist && tsc && cp -r src/resources dist/ && chmod +x dist/server.js",
     "start": "npm run build && tsx src/server.ts",
     "dev": "npm run build && fastmcp dev src/server.ts",
     "prepublishOnly": "node ./scripts/inject-client-id.js && npm run build",
