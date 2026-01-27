@@ -22,7 +22,7 @@ import {
   updateProjectTool,
 } from "./projects.js";
 
-export function registerAptosBuildTools(server: FastMCP): void {
+export function registerGeomiTools(server: FastMCP): void {
   // get all user's organizations + projects + applications + api keys
   server.addTool(getApplicationsTool);
   // Create tools
@@ -41,3 +41,4 @@ export function registerAptosBuildTools(server: FastMCP): void {
   server.addTool(deleteProjectTool);
   server.addTool(deleteApiKeyTool);
 }
+

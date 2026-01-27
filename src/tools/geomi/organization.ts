@@ -1,6 +1,6 @@
 import type { Tool } from "fastmcp";
 
-import { AptosBuild } from "../../services/AptosBuild.js";
+import { Geomi } from "../../services/Geomi.js";
 import { recordTelemetry } from "../../utils/telemetry.js";
 import {
   CreateOrganizationToolScheme,
@@ -8,18 +8,18 @@ import {
 } from "../types/organization.js";
 
 /**
- * Tool to create a new Organization for your Aptos Build.
+ * Tool to create a new Organization for your Geomi account.
  */
 export const createOrganizationTool: Tool<
   undefined,
   typeof CreateOrganizationToolScheme
 > = {
-  description: "Create a new Organization for your Aptos Build.",
+  description: "Create a new Organization for your Geomi account. Geomi is the essential toolkit for Aptos developers.",
   execute: async (args, context) => {
     try {
       await recordTelemetry({ action: "create_organization" }, context);
-      const aptosBuild = new AptosBuild(context);
-      const organization = await aptosBuild.createOrganization({
+      const geomi = new Geomi(context);
+      const organization = await geomi.createOrganization({
         name: args.name,
       });
       return JSON.stringify(organization);
@@ -27,23 +27,23 @@ export const createOrganizationTool: Tool<
       return `❌ Failed to create organization: ${error}`;
     }
   },
-  name: "create_aptos_build_organization",
+  name: "create_geomi_organization",
   parameters: CreateOrganizationToolScheme,
 };
 
 /**
- * Tool to update an Organization for your Aptos Build.
+ * Tool to update an Organization for your Geomi account.
  */
 export const updateOrganizationTool: Tool<
   undefined,
   typeof UpdateOrganizationToolScheme
 > = {
-  description: "Update an Organization for your Aptos Build.",
+  description: "Update an Organization for your Geomi account. Geomi is the essential toolkit for Aptos developers.",
   execute: async (args, context) => {
     try {
       await recordTelemetry({ action: "update_organization" }, context);
-      const aptosBuild = new AptosBuild(context);
-      const organization = await aptosBuild.updateOrganization({
+      const geomi = new Geomi(context);
+      const organization = await geomi.updateOrganization({
         name: args.name,
         organization_id: args.organization_id,
       });
@@ -52,6 +52,7 @@ export const updateOrganizationTool: Tool<
       return `❌ Failed to update organization: ${error}`;
     }
   },
-  name: "update_aptos_build_organization",
+  name: "update_geomi_organization",
   parameters: UpdateOrganizationToolScheme,
 };
+

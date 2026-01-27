@@ -3,13 +3,13 @@
 ## Prerequisite
 
 - [node and npm](https://nodejs.org/en) (npm ≥ 5.2.0)
-- Build Bot Api Key
+- Geomi Bot Api Key
 
-### Generate a `Build Bot Api Key`
+### Generate a `Geomi Bot Api Key`
 
-To be able to make [Aptos Build](https://build.aptoslabs.com/) actions like managing api keys, etc. Follow those instruction to generate a new Bot Api Key to use with the MCP
+To be able to make [Geomi](https://geomi.dev/) actions like managing api keys, etc. Follow those instruction to generate a new Bot Api Key to use with the MCP
 
-1. Go to [https://build.aptoslabs.com/](https://build.aptoslabs.com/)
+1. Go to [https://geomi.dev/](https://geomi.dev/)
 2. Click on your name in the bottom left corner
 3. Click on "Bot Keys"
 4. Click on the "Create Bot Key" button

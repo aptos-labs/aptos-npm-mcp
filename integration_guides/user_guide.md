@@ -24,13 +24,13 @@ Users should create proposals, vote once per wallet, view real-time results.
 Include a wallet integration for Aptos testnet."
 ```
 
-## Aptos Build Queries - Be Precise
+## Geomi Queries - Be Precise
 
 **Good Examples:**
 
-- "Get me all of my applications on Aptos Build"
+- "Get me all of my applications on Geomi"
 - "Create a new Full node API key resource named 'MyDApp-Production'"
-- "List all active API keys for my Build account"
+- "List all active API keys for my Geomi account"
 
 ## Perfect Prompt Template
 

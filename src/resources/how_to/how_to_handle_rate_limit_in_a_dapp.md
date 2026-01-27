@@ -64,7 +64,7 @@ Ensure the configured API key network matches the network your dapp is using:
    - Common networks: `Network.MAINNET`, `Network.TESTNET`, `Network.DEVNET`
 
 2. **Verify API key network**:
-   - Check your Build console to see which network the API key was created for
+   - Check your Geomi console to see which network the API key was created for
    - API keys are network-specific and cannot be used across different networks
 
 ### 2.2 If Networks Don't Match
@@ -80,7 +80,7 @@ Ensure the configured API key network matches the network your dapp is using:
 
 If you have a properly configured API key but still experience rate limits:
 
-1. **Check your API key's rate limit settings** in the Aptos Build console:
+1. **Check your API key's rate limit settings** in the Geomi console:
 
    - Look for the `httpRateLimitPerIp` property
    - This determines how many requests per second your application can make
@@ -93,12 +93,12 @@ If you have a properly configured API key but still experience rate limits:
 
 If the current `httpRateLimitPerIp` is too low:
 
-1. **Navigate to your Aptos Build console**
+1. **Navigate to your Geomi console**
 2. **Select your API key**
 3. **Increase the `httpRateLimitPerIp` value** to a more appropriate level
 4. **Save the changes**
 
-⚠️ **Note**: Higher rate limits may incur additional costs depending on your Build plan.
+⚠️ **Note**: Higher rate limits may incur additional costs depending on your Geomi plan.
 
 ## 🟩 Step 4: Implement Rate Limit Error Handling in Code
 
@@ -162,5 +162,5 @@ Implement monitoring to track:
 
 ## 🟩 Additional Resources
 
-- [Aptos Build API Keys Guide](https://build.aptoslabs.com/docs/start/api-keys)
+- [Geomi API Keys Guide](https://geomi.dev/docs/start/api-keys)
 - [How to config a Full Node API Key in a dapp](./how_to_config_a_full_node_api_key_in_a_dapp.md)

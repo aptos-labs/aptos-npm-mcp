@@ -1,10 +1,10 @@
 # How to Create and Manage Keys
 
-This guide provides an overview of the different types of API keys available in Aptos Build and where to create each type. Use this as a central reference point for understanding key management across your Aptos projects.
+This guide provides an overview of the different types of API keys available in Geomi and where to create each type. Geomi is the essential toolkit for Aptos developers. Use this as a central reference point for understanding key management across your Aptos projects.
 
 ## Overview of Key Types
 
-Aptos Build supports three main types of API keys, each serving different purposes:
+Geomi supports three main types of API keys, each serving different purposes:
 
 ### Full Node API Keys
 
@@ -28,7 +28,7 @@ Auto-generated keys for accessing indexed blockchain data through the No-Code In
 
 ### Full Node API Keys
 
-1. Navigate to the [Aptos Build dashboard](https://build.aptos.dev)
+1. Navigate to the [Geomi dashboard](https://geomi.dev)
 2. Go to **API Keys** section
 3. Click **Create New API Key**
 4. Configure your key settings and network preferences
@@ -38,7 +38,7 @@ Auto-generated keys for accessing indexed blockchain data through the No-Code In
 
 Gas Station keys are automatically generated when you create a Gas Station project:
 
-1. Navigate to **Gas Station** in the Aptos Build dashboard
+1. Navigate to **Gas Station** in the Geomi dashboard
 2. Create a new Gas Station project
 3. Your API key will be automatically generated and displayed
 4. Copy the key for use in your application
@@ -47,7 +47,7 @@ Gas Station keys are automatically generated when you create a Gas Station proje
 
 Indexer keys are automatically generated when you create a Processor project:
 
-1. Navigate to **No-Code Indexer** in the Aptos Build dashboard
+1. Navigate to **No-Code Indexer** in the Geomi dashboard
 2. Create a new Processor project
 3. Your indexer API key will be automatically generated
 4. Use this key to access your indexed data
@@ -58,11 +58,11 @@ For detailed implementation instructions, see these specific guides:
 
 - **[Full Node API Key Configuration](../how_to/how_to_config_a_full_node_api_key_in_a_dapp.md)**: Detailed guide on creating and managing Full Node API keys
 - **[Gas Station Integration](../how_to/how_to_integrate_gas_station.md)**: Complete guide on integrating Gas Station for gasless transactions
-- **[No-Code Indexer Integration](../how_to/how_to_integrate_no_code_indexer_build.md)**: Step-by-step guide for setting up and using the No-Code Indexer
+- **[No-Code Indexer Integration](../how_to/how_to_integrate_no_code_indexer.md)**: Step-by-step guide for setting up and using the No-Code Indexer
 
 ## Security Best Practices
 
 - Store all API keys in environment variables, never in source code
 - Use different keys for development, staging, and production environments
 - Regularly rotate your API keys for enhanced security
-- Monitor key usage through the Aptos Build dashboard
+- Monitor key usage through the Geomi dashboard

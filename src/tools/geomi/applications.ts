@@ -1,7 +1,7 @@
 import { Tool } from "fastmcp";
 import { z } from "zod";
 
-import { AptosBuild } from "../../services/AptosBuild.js";
+import { Geomi } from "../../services/Geomi.js";
 import { recordTelemetry } from "../../utils/telemetry.js";
 import {
   CreateApiResourceApplicationToolScheme,
@@ -9,50 +9,51 @@ import {
   DeleteApplicationToolScheme,
   getApplicationsToolScheme,
   UpdateApplicationNameToolScheme,
+  toApiFrontendArgs,
 } from "../types/organization.js";
 import { GasStation } from "../../services/GasStation.js";
 
 /**
- * Tool to get all applications for your Aptos Build Organization.
+ * Tool to get all applications for your Geomi Organization.
  */
 export const getApplicationsTool: Tool<
   undefined,
   typeof getApplicationsToolScheme
 > = {
-  description: `Get your Aptos Build Organizations with their projects and applications and the API Keys. Api Keys are secret keys so it is important to keep them safe and secure.
+  description: `Get your Geomi Organizations with their projects and applications and the API Keys. Geomi is the essential toolkit for Aptos developers. Api Keys are secret keys so it is important to keep them safe and secure.
     To get the full node api keys, you need to get the Applications with a serviceType of "Api".
     To get the gas station api keys, you need to get the Applications with a serviceType of "Gs".`,
   execute: async (args, context) => {
     try {
       await recordTelemetry({ action: "get_applications" }, context);
-      const aptosBuild = new AptosBuild(context);
-      const organizations = await aptosBuild.getApplications();
+      const geomi = new Geomi(context);
+      const organizations = await geomi.getApplications();
       return JSON.stringify(organizations);
     } catch (error) {
       return `❌ Failed to get organizations: ${error}`;
     }
   },
-  name: "get_aptos_build_applications",
+  name: "get_geomi_applications",
   parameters: z.object({}),
 };
 
 /**
- * Tool to create a new Full Node API Resource application for your Aptos Build Organization.
+ * Tool to create a new Full Node API Resource application for your Geomi Organization.
  */
 export const createApiResourceApplicationTool: Tool<
   undefined,
   typeof CreateApiResourceApplicationToolScheme
 > = {
   description:
-    "Create a new Application for your Aptos Build Organization. This tool can be used to create an API resource application to then create api keys for general blockchain interactions.",
+    "Create a new Application for your Geomi Organization. Geomi is the essential toolkit for Aptos developers. This tool can be used to create an API resource application to then create api keys for general Aptos blockchain interactions.",
   execute: async (args, context) => {
     try {
       await recordTelemetry(
         { action: "create_api_resource_application" },
         context
       );
-      const aptosBuild = new AptosBuild(context);
-      const application = await aptosBuild.createApplication({
+      const geomi = new Geomi(context);
+      const application = await geomi.createApplication({
         args: {
           description: args.description ?? null,
           name: args.name,
@@ -67,21 +68,21 @@ export const createApiResourceApplicationTool: Tool<
       return `❌ Failed to create application: ${error}`;
     }
   },
-  name: "create_aptos_build_api_resource_application",
+  name: "create_geomi_api_resource_application",
   parameters: CreateApiResourceApplicationToolScheme,
 };
 
 /**
- * Tool to create a new Full Node API Resource application for your Aptos Build Organization.
+ * Tool to create a new Gas Station application for your Geomi Organization.
  */
 export const createGasStationApplicationTool: Tool<
   undefined,
   typeof CreateGasStationApplicationToolScheme
 > = {
   description:
-    "Create a new Application for your Aptos Build Organization. This tool can be used to create an Gas Station application. Gas Station is a service that allows you to create gas stations for your Aptos dApps.",
+    "Create a new Application for your Geomi Organization. Geomi is the essential toolkit for Aptos developers. This tool can be used to create a Gas Station application. Gas Station is a service that allows you to sponsor gas fees for your Aptos dApps users.",
   execute: async (args, context) => {
-    const aptosBuild = new AptosBuild(context);
+    const geomi = new Geomi(context);
     let applicationId: string | null = null;
     try {
       await recordTelemetry(
@@ -89,7 +90,7 @@ export const createGasStationApplicationTool: Tool<
         context
       );
       // Create the application
-      const application = await aptosBuild.createApplication({
+      const application = await geomi.createApplication({
         args: {
           description: args.description ?? null,
           name: args.name,
@@ -103,11 +104,11 @@ export const createGasStationApplicationTool: Tool<
       applicationId = application.id;
 
       // Create the API key for the Gs application
-      const apiKey = await aptosBuild.createApiKey({
+      const apiKey = await geomi.createApiKey({
         organization_id: args.organization_id,
         project_id: args.project_id,
         application_id: application.id,
-        frontend_args: args.frontend_args ?? null,
+        frontend_args: toApiFrontendArgs(args.frontend_args),
         name: args.api_key_name,
       });
 
@@ -137,7 +138,7 @@ export const createGasStationApplicationTool: Tool<
     } catch (error) {
       // Delete the new application if the processor creation fails so that it's not orphaned.
       if (applicationId) {
-        await aptosBuild.deleteApplication({
+        await geomi.deleteApplication({
           application_id: applicationId,
           organization_id: args.organization_id,
           project_id: args.project_id,
@@ -151,18 +152,18 @@ export const createGasStationApplicationTool: Tool<
 };
 
 /**
- * Tool to delete an Application for your Aptos Build Organization.
+ * Tool to delete an Application for your Geomi Organization.
  */
 export const deleteApplicationTool: Tool<
   undefined,
   typeof DeleteApplicationToolScheme
 > = {
-  description: "Delete an Application for your Aptos Build Organization.",
+  description: "Delete an Application for your Geomi Organization. Geomi is the essential toolkit for Aptos developers.",
   execute: async (args, context) => {
     try {
       await recordTelemetry({ action: "delete_application" }, context);
-      const aptosBuild = new AptosBuild(context);
-      const application = await aptosBuild.deleteApplication({
+      const geomi = new Geomi(context);
+      const application = await geomi.deleteApplication({
         application_id: args.application_id,
         organization_id: args.organization_id,
         project_id: args.project_id,
@@ -172,23 +173,23 @@ export const deleteApplicationTool: Tool<
       return `❌ Failed to delete application: ${error}`;
     }
   },
-  name: "delete_aptos_application",
+  name: "delete_geomi_application",
   parameters: DeleteApplicationToolScheme,
 };
 
 /**
- * Tool to update an Application name for your Aptos Build Organization.
+ * Tool to update an Application name for your Geomi Organization.
  */
 export const updateApplicationNameTool: Tool<
   undefined,
   typeof UpdateApplicationNameToolScheme
 > = {
-  description: "Update an Application name for your Aptos Build Organization.",
+  description: "Update an Application name for your Geomi Organization. Geomi is the essential toolkit for Aptos developers.",
   execute: async (args, context) => {
     try {
       await recordTelemetry({ action: "update_application_name" }, context);
-      const aptosBuild = new AptosBuild(context);
-      const application = await aptosBuild.updateApplicationName({
+      const geomi = new Geomi(context);
+      const application = await geomi.updateApplicationName({
         application_id: args.application_id,
         organization_id: args.organization_id,
         project_id: args.project_id,
@@ -199,6 +200,7 @@ export const updateApplicationNameTool: Tool<
       return `❌ Failed to update application name: ${error}`;
     }
   },
-  name: "update_aptos_build_application_name",
+  name: "update_geomi_application_name",
   parameters: UpdateApplicationNameToolScheme,
 };
+

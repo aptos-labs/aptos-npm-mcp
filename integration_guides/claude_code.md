@@ -6,7 +6,7 @@
 npm install -g @anthropic-ai/claude-code
 ```
 
-2. Obtain your `APTOS_BOT_KEY` by following the instructions [here](https://github.com/aptos-labs/aptos-npm-mcp?tab=readme-ov-file#generate-a-build-bot-api-key).
+2. Obtain your `APTOS_BOT_KEY` by following the instructions [here](https://github.com/aptos-labs/aptos-npm-mcp?tab=readme-ov-file#generate-a-geomi-bot-api-key).
 
 3. Navigate to your project
 

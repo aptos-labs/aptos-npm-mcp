@@ -1,17 +1,17 @@
-# How to Set Up No-Code Indexing with Aptos Build
+# How to Set Up No-Code Indexing with Geomi
 
-No-Code Indexing allows you to create real-time blockchain data indexers without writing custom indexing logic or managing/building infrastructure. Use it to query smart contract events in real-time for your dApp frontend.
+No-Code Indexing allows you to create real-time blockchain data indexers without writing custom indexing logic or managing/building infrastructure. Use it to query smart contract events in real-time for your dApp frontend. Geomi is the essential toolkit for Aptos developers.
 
 ## Prerequisites
 
 - Deployed Move smart contract with events on Testnet or Mainnet
 - Contract address and event structures
-- Aptos Build account
+- Geomi account
 
-## Project Setup in Aptos Build
+## Project Setup in Geomi
 
-1. **Create processor in Aptos Build**:
-   - Go to [Aptos Build](https://build.aptoslabs.com/) and sign in
+1. **Create processor in Geomi**:
+   - Go to [Geomi](https://geomi.dev/) and sign in
    - Click "Create New Project" → "Processor"
    - Name your project (3-32 characters, lowercase, numbers, `_` or `-`)
 
@@ -55,7 +55,7 @@ query {
 ```
 
 4. **Get API credentials**:
-   - Return to Aptos Build → your project → API Keys
+   - Return to Geomi → your project → API Keys
    - Copy API key (starts with `aptoslabs_...`)
    - Note processor ID from API URL
 
@@ -262,3 +262,4 @@ curl -X POST https://api.testnet.aptoslabs.com/nocode/v1/api/YOUR_PROCESSOR_ID/v
    - **GraphQL errors**: Check table and column names match exactly
 
 Replace `your_table_name` with your actual table name and adjust column names to match your event structure.
+

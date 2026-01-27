@@ -1,6 +1,6 @@
 # How to config a Full Node API Key for general blockchain interactions in an Aptos dapp
 
-Aptos full node api keys are designed as indentifications for authentication and rate limiting purposes. If you do not use an API key, your client will be considered “anonymous” and subject to significantly lower rate limits.
+Aptos full node api keys are designed as indentifications for authentication and rate limiting purposes. If you do not use an API key, your client will be considered "anonymous" and subject to significantly lower rate limits.
 
 The full node api key is used for general blockchain interactions when an applications wants to read data from chain or submit data to chain.
 
@@ -9,7 +9,7 @@ It is structured to enforce user validation steps before applying any modificati
 
 ### 🟩 Step 1: Retrieve & Display Available API Keys
 
-1. Fetch the user's Build Organizations, including:
+1. Fetch the user's Geomi Organizations, including:
 
 - Organizations
 - Applications
@@ -94,6 +94,6 @@ const aptos = new Aptos(
 - ✅ If mismatched, warn the user and ask for confirmation before proceeding.
 
 ### 🟩 Bonus: Documentation References
-[Build API Keys Guide](https://build.aptoslabs.com/docs/start/api-keys)
+[Geomi API Keys Guide](https://geomi.dev/docs/start/api-keys)
 
 ```

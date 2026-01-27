@@ -12,25 +12,25 @@ import {
 import { config } from "../config.js";
 import { Context } from "fastmcp";
 
-export class AptosBuild {
+export class Geomi {
   protected readonly headers: Record<string, string>;
   private readonly adminUrl: string;
   private readonly context: Context<any>;
 
   constructor(context: Context<any>) {
-    if (!config.aptos_build.botKey) {
+    if (!config.geomi.botKey) {
       throw new Error(
         `APTOS_BOT_KEY is not set. To generate a Bot Key: 
-        1. Go to [https://build.aptoslabs.com/](https://build.aptoslabs.com/)
+        1. Go to [https://geomi.dev/](https://geomi.dev/)
         2. Click on your name in the bottom left corner
         3. Click on "Bot Keys"
         4. Click on the "Create Bot Key" button
         5. Copy the Bot Key and paste it into the MCP configuration file as an env arg: APTOS_BOT_KEY=<your-bot-key>`
       );
     }
-    this.adminUrl = config.aptos_build.adminUrl;
+    this.adminUrl = config.geomi.adminUrl;
     this.headers = {
-      Authorization: `Bearer ${config.aptos_build.botKey}`,
+      Authorization: `Bearer ${config.geomi.botKey}`,
       "x-is-aptos-bot": "true",
     };
     this.context = context;
@@ -398,3 +398,4 @@ export class AptosBuild {
     };
   };
 }
+
