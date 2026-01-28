@@ -1,5 +1,3 @@
-import { Tool } from "fastmcp";
-
 import { Geomi } from "../../services/Geomi.js";
 import { recordTelemetry } from "../../utils/telemetry.js";
 import {
@@ -11,12 +9,17 @@ import {
 /**
  * Tool to create a new Project for your Geomi Organization.
  */
-export const createProjectTool: Tool<
-  undefined,
-  typeof CreateProjectToolScheme
-> = {
-  description: "Create a new Project for your Geomi Organization. Geomi is the essential toolkit for Aptos developers.",
-  execute: async (args, context) => {
+export const createProjectTool = {
+  description:
+    "Create a new Project for your Geomi Organization. Geomi is the essential toolkit for Aptos developers.",
+  execute: async (
+    args: {
+      description: string;
+      organization_id: string;
+      project_name: string;
+    },
+    context: any
+  ) => {
     try {
       await recordTelemetry({ action: "create_project" }, context);
       const geomi = new Geomi(context);
@@ -37,12 +40,18 @@ export const createProjectTool: Tool<
 /**
  * Tool to update a Project for your Geomi Organization.
  */
-export const updateProjectTool: Tool<
-  undefined,
-  typeof UpdateProjectToolScheme
-> = {
-  description: "Update a Project for your Geomi Organization. Geomi is the essential toolkit for Aptos developers.",
-  execute: async (args, context) => {
+export const updateProjectTool = {
+  description:
+    "Update a Project for your Geomi Organization. Geomi is the essential toolkit for Aptos developers.",
+  execute: async (
+    args: {
+      description?: string;
+      organization_id: string;
+      project_id: string;
+      project_name?: string;
+    },
+    context: any
+  ) => {
     try {
       await recordTelemetry({ action: "update_project" }, context);
       const geomi = new Geomi(context);
@@ -64,12 +73,13 @@ export const updateProjectTool: Tool<
 /**
  * Tool to delete a Project for your Geomi Organization.
  */
-export const deleteProjectTool: Tool<
-  undefined,
-  typeof DeleteProjectToolScheme
-> = {
-  description: "Delete a Project for your Geomi Organization. Geomi is the essential toolkit for Aptos developers.",
-  execute: async (args, context) => {
+export const deleteProjectTool = {
+  description:
+    "Delete a Project for your Geomi Organization. Geomi is the essential toolkit for Aptos developers.",
+  execute: async (
+    args: { organization_id: string; project_id: string },
+    context: any
+  ) => {
     try {
       await recordTelemetry({ action: "delete_project" }, context);
       const geomi = new Geomi(context);
@@ -85,4 +95,3 @@ export const deleteProjectTool: Tool<
   name: "delete_geomi_project",
   parameters: DeleteProjectToolScheme,
 };
-

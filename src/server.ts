@@ -17,7 +17,7 @@ async function main() {
 
   const server = new FastMCP({
     name: config.server.name,
-    version: "0.0.19",
+    version: "0.0.22",
   });
 
   registerTools(server);

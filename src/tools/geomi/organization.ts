@@ -1,5 +1,3 @@
-import type { Tool } from "fastmcp";
-
 import { Geomi } from "../../services/Geomi.js";
 import { recordTelemetry } from "../../utils/telemetry.js";
 import {
@@ -10,12 +8,10 @@ import {
 /**
  * Tool to create a new Organization for your Geomi account.
  */
-export const createOrganizationTool: Tool<
-  undefined,
-  typeof CreateOrganizationToolScheme
-> = {
-  description: "Create a new Organization for your Geomi account. Geomi is the essential toolkit for Aptos developers.",
-  execute: async (args, context) => {
+export const createOrganizationTool = {
+  description:
+    "Create a new Organization for your Geomi account. Geomi is the essential toolkit for Aptos developers.",
+  execute: async (args: { name: string }, context: any) => {
     try {
       await recordTelemetry({ action: "create_organization" }, context);
       const geomi = new Geomi(context);
@@ -34,12 +30,13 @@ export const createOrganizationTool: Tool<
 /**
  * Tool to update an Organization for your Geomi account.
  */
-export const updateOrganizationTool: Tool<
-  undefined,
-  typeof UpdateOrganizationToolScheme
-> = {
-  description: "Update an Organization for your Geomi account. Geomi is the essential toolkit for Aptos developers.",
-  execute: async (args, context) => {
+export const updateOrganizationTool = {
+  description:
+    "Update an Organization for your Geomi account. Geomi is the essential toolkit for Aptos developers.",
+  execute: async (
+    args: { name: string; organization_id: string },
+    context: any
+  ) => {
     try {
       await recordTelemetry({ action: "update_organization" }, context);
       const geomi = new Geomi(context);
@@ -55,4 +52,3 @@ export const updateOrganizationTool: Tool<
   name: "update_geomi_organization",
   parameters: UpdateOrganizationToolScheme,
 };
-
