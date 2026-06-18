@@ -23,6 +23,9 @@
   "author": "aptoslabs.com",
   "type": "module",
   "description": "A MCP server for Aptos NPM packages",
+  "engines": {
+    "node": ">=22"
+  },
   "files": [
     "dist",
     "package.json"
