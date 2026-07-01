@@ -23,6 +23,9 @@
   "author": "aptoslabs.com",
   "type": "module",
   "description": "A MCP server for Aptos NPM packages",
+  "engines": {
+    "node": ">=22.12.0"
+  },
   "files": [
     "dist",
     "package.json"
@@ -54,5 +57,8 @@
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.32.0",
     "vitest": "^3.1.3"
+  },
+  "overrides": {
+    "esbuild": ">=0.28.1"
   }
 }

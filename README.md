@@ -2,7 +2,7 @@
 
 ## Prerequisite
 
-- [node and npm](https://nodejs.org/en) (npm ≥ 5.2.0)
+- [node and npm](https://nodejs.org/en) (node ≥ 22.12.0, npm ≥ 10 — bundled with node 22)
 - Geomi Bot Api Key
 
 ### Generate a `Geomi Bot Api Key`
