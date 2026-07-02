@@ -1,6 +1,26 @@
 # Aptos NPM MCP
 
-## Prerequisite
+## What This MCP Server Can Do
+
+The Aptos MCP Server provides **specialized tools** and **development guides** that automate Aptos infrastructure and ensure AI agents use current best practices.
+
+### 🚀 **Infrastructure Automation**
+- **Automate Aptos Geomi platform management** (skip manual setup steps and let the agent manage your projects)
+- **Create gas stations for sponsored transactions** (give your users free transactions with web2 UX)
+- **Handle API keys and rate limits** (automated setup for production apps)
+
+### 🤖 **AI Agent Guidance**
+- **Current Move smart contract patterns** (MCP-specialized up-to-date language vs outdated general models)
+- **Modern Aptos features** (sponsored transactions, no-code indexer, wallet adapters for Google login)
+- **Proper CLI usage and workflows** (current Aptos commands vs generic blockchain knowledge)
+
+**Why This Exists:** Aptos moves so fast that generic AI models don't know about new features like Aptos Geomi gas stations, no-code indexers, or current Move patterns.
+
+📋 **[View Complete Capabilities →](./capabilities.md)**
+
+---
+
+## Prerequisites
 
 - [node and npm](https://nodejs.org/en) (node ≥ 22.12.0, npm ≥ 10 — bundled with node 22)
 - Geomi Bot Api Key
