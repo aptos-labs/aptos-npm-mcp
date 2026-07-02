@@ -1,12 +1,11 @@
-import { Context } from "fastmcp";
+import type { Context } from "fastmcp";
 import { config } from "../config.js";
 
 export class GasStation {
   protected readonly headers: Record<string, string>;
   private readonly gasStationEndpoint: string;
-  private readonly context: Context<any>;
 
-  constructor(context: Context<any>, network: "testnet" | "mainnet") {
+  constructor(_context: Context<any>, network: "testnet" | "mainnet") {
     if (!config.geomi.botKey) {
       throw new Error(
         `APTOS_BOT_KEY is not set. To generate a Bot Key: 
@@ -14,7 +13,7 @@ export class GasStation {
         2. Click on your name in the bottom left corner
         3. Click on "Bot Keys"
         4. Click on the "Create Bot Key" button
-        5. Copy the Bot Key and paste it into the MCP configuration file as an env arg: APTOS_BOT_KEY=<your-bot-key>`
+        5. Copy the Bot Key and paste it into the MCP configuration file as an env arg: APTOS_BOT_KEY=<your-bot-key>`,
       );
     }
     this.gasStationEndpoint =
@@ -26,7 +25,6 @@ export class GasStation {
       "x-is-aptos-bot": "true",
       "Content-Type": "application/json",
     };
-    this.context = context;
   }
 
   async createGasStation({
@@ -51,13 +49,13 @@ export class GasStation {
           method: "POST",
           headers: this.createGasStationClientHeaders(appHeaders),
           body: JSON.stringify({}),
-        }
+        },
       );
 
       if (!gasStationResponse.ok) {
         const errorText = await gasStationResponse.text();
         throw new Error(
-          `Gas station API failed with status ${gasStationResponse.status}: ${errorText}`
+          `Gas station API failed with status ${gasStationResponse.status}: ${errorText}`,
         );
       }
 
@@ -117,25 +115,25 @@ export class GasStation {
               },
             }),
           });
-        })
+        }),
       );
 
       const gasStationRules = await Promise.all(
         gasStationRulesResponse.map(async (rule) => {
           return await rule.json();
-        })
+        }),
       );
 
       return gasStationRules;
     } catch (error) {
       throw new Error(
-        `Failed to create gas station rules: ${JSON.stringify(error)}`
+        `Failed to create gas station rules: ${JSON.stringify(error)}`,
       );
     }
   }
 
   protected createGasStationClientHeaders(
-    additionalHeaders: Record<string, string> = {}
+    additionalHeaders: Record<string, string> = {},
   ) {
     const headers = new Headers(this.headers);
 

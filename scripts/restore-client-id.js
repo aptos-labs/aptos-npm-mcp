@@ -1,12 +1,12 @@
-import fs from "fs";
-import path from "path";
-import { fileURLToPath } from "url";
+import fs from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const targetFile = path.join(__dirname, "../src/config.ts");
-let content = fs.readFileSync(targetFile, "utf8");
+const content = fs.readFileSync(targetFile, "utf8");
 
 // Replace any string-assigned GA_CLIENT_ID back to process.env.GA_CLIENT_ID
 const restoredContent = content.replace(

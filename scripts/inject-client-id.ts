@@ -1,12 +1,13 @@
-import dotenv from "dotenv";
-import fs from "fs";
-import path from "path";
-import { fileURLToPath } from "url";
+import fs from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+
+import { loadEnvFromFile } from "../src/load-env.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-dotenv.config();
+loadEnvFromFile();
 
 const GA_CLIENT_ID = process.env.GA_CLIENT_ID;
 
@@ -16,7 +17,7 @@ if (!GA_CLIENT_ID) {
 }
 
 const targetFile = path.join(__dirname, "../src/config.ts");
-let content = fs.readFileSync(targetFile, "utf8");
+const content = fs.readFileSync(targetFile, "utf8");
 
 // Replace process.env.GA_CLIENT_ID with the actual value as a string literal
 const injectedContent = content.replace(

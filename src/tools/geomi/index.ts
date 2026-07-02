@@ -9,9 +9,9 @@ import {
   createApiResourceApplicationTool,
   createGasStationApplicationTool,
   deleteApplicationTool,
+  getApplicationsTool,
   updateApplicationNameTool,
 } from "./applications.js";
-import { getApplicationsTool } from "./applications.js";
 import {
   createOrganizationTool,
   updateOrganizationTool,
@@ -41,4 +41,3 @@ export function registerGeomiTools(server: FastMCP): void {
   server.addTool(deleteProjectTool);
   server.addTool(deleteApiKeyTool);
 }
-

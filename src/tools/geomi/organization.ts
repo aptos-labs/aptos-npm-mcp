@@ -35,7 +35,7 @@ export const updateOrganizationTool = {
     "Update an Organization for your Geomi account. Geomi is the essential toolkit for Aptos developers.",
   execute: async (
     args: { name: string; organization_id: string },
-    context: any
+    context: any,
   ) => {
     try {
       await recordTelemetry({ action: "update_organization" }, context);

@@ -1,7 +1,6 @@
-import dotenv from "dotenv";
+import { loadEnvFromFile } from "./load-env.js";
 
-// Load environment variables from .env file
-dotenv.config();
+loadEnvFromFile();
 
 const GA_MEASURMENT_ID = "G-LXY7NNQBTG";
 const GA_CLIENT_ID = process.env.GA_CLIENT_ID;

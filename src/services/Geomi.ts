@@ -1,23 +1,21 @@
 import {
-  ApiKey,
-  Application,
+  type ApiKey,
+  type Application,
+  type CreateApiKeyFrontendArgs,
+  type CreateApplicationArgs,
   createAdminApiClient,
-  CreateApiKeyFrontendArgs,
-  CreateApplicationArgs,
-  Organization,
-  Project,
-  RecursiveOrgData,
+  type Organization,
+  type Project,
+  type RecursiveOrgData,
 } from "@aptos-labs/api-gateway-admin-api-client";
-
+import type { Context } from "fastmcp";
 import { config } from "../config.js";
-import { Context } from "fastmcp";
 
 export class Geomi {
   protected readonly headers: Record<string, string>;
   private readonly adminUrl: string;
-  private readonly context: Context<any>;
 
-  constructor(context: Context<any>) {
+  constructor(_context: Context<any>) {
     if (!config.geomi.botKey) {
       throw new Error(
         `APTOS_BOT_KEY is not set. To generate a Bot Key: 
@@ -25,7 +23,7 @@ export class Geomi {
         2. Click on your name in the bottom left corner
         3. Click on "Bot Keys"
         4. Click on the "Create Bot Key" button
-        5. Copy the Bot Key and paste it into the MCP configuration file as an env arg: APTOS_BOT_KEY=<your-bot-key>`
+        5. Copy the Bot Key and paste it into the MCP configuration file as an env arg: APTOS_BOT_KEY=<your-bot-key>`,
       );
     }
     this.adminUrl = config.geomi.adminUrl;
@@ -33,7 +31,6 @@ export class Geomi {
       Authorization: `Bearer ${config.geomi.botKey}`,
       "x-is-aptos-bot": "true",
     };
-    this.context = context;
   }
 
   /**
@@ -115,7 +112,7 @@ export class Geomi {
       return organization;
     } catch (error) {
       throw new Error(
-        `Failed to create organization: ${JSON.stringify(error)}`
+        `Failed to create organization: ${JSON.stringify(error)}`,
       );
     }
   }
@@ -306,7 +303,7 @@ export class Geomi {
       return organization;
     } catch (error) {
       throw new Error(
-        `Failed to update organization: ${JSON.stringify(error)}`
+        `Failed to update organization: ${JSON.stringify(error)}`,
       );
     }
   }
@@ -361,7 +358,7 @@ export class Geomi {
       return "Application name updated successfully";
     } catch (error) {
       throw new Error(
-        `Failed to update application name: ${JSON.stringify(error)}`
+        `Failed to update application name: ${JSON.stringify(error)}`,
       );
     }
   }
@@ -374,11 +371,11 @@ export class Geomi {
   }
 
   private createCustomFetch = (
-    additionalHeaders: Record<string, string> = {}
+    additionalHeaders: Record<string, string> = {},
   ) => {
     return async (
       input: Request | string | URL,
-      init?: RequestInit
+      init?: RequestInit,
     ): Promise<Response> => {
       const headers = new Headers(init?.headers);
 
@@ -398,4 +395,3 @@ export class Geomi {
     };
   };
 }
-

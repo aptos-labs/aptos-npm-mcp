@@ -18,7 +18,7 @@ export const createProjectTool = {
       organization_id: string;
       project_name: string;
     },
-    context: any
+    context: any,
   ) => {
     try {
       await recordTelemetry({ action: "create_project" }, context);
@@ -50,7 +50,7 @@ export const updateProjectTool = {
       project_id: string;
       project_name?: string;
     },
-    context: any
+    context: any,
   ) => {
     try {
       await recordTelemetry({ action: "update_project" }, context);
@@ -78,7 +78,7 @@ export const deleteProjectTool = {
     "Delete a Project for your Geomi Organization. Geomi is the essential toolkit for Aptos developers.",
   execute: async (
     args: { organization_id: string; project_id: string },
-    context: any
+    context: any,
   ) => {
     try {
       await recordTelemetry({ action: "delete_project" }, context);

@@ -2,9 +2,9 @@ import { Geomi } from "../../services/Geomi.js";
 import { recordTelemetry } from "../../utils/telemetry.js";
 import {
   CreateApiKeyToolScheme,
-  UpdateApiKeyToolScheme,
   DeleteApiKeyToolScheme,
   toApiFrontendArgs,
+  UpdateApiKeyToolScheme,
 } from "../types/organization.js";
 
 /**
@@ -21,7 +21,7 @@ export const createApiKeyTool = {
       organization_id: string;
       project_id: string;
     },
-    context: any
+    context: any,
   ) => {
     try {
       await recordTelemetry({ action: "create_api_key" }, context);
@@ -57,13 +57,13 @@ export const updateApiKeyTool = {
       organization_id: string;
       project_id: string;
     },
-    context: any
+    context: any,
   ) => {
     try {
       await recordTelemetry({ action: "update_api_key" }, context);
       const geomi = new Geomi(context);
       context.log.info(
-        `Updating api key: ${JSON.stringify(args.frontend_args)}`
+        `Updating api key: ${JSON.stringify(args.frontend_args)}`,
       );
       const apiKey = await geomi.updateApiKey({
         application_id: args.application_id,
@@ -95,7 +95,7 @@ export const deleteApiKeyTool = {
       organization_id: string;
       project_id: string;
     },
-    context: any
+    context: any,
   ) => {
     try {
       await recordTelemetry({ action: "delete_api_key" }, context);
