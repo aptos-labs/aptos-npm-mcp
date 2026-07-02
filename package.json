@@ -34,9 +34,10 @@
     "build": "rm -rf dist && tsc && cp -r src/resources dist/ && chmod +x dist/server.js",
     "start": "npm run build && tsx src/server.ts",
     "dev": "npm run build && fastmcp dev src/server.ts",
-    "prepublishOnly": "node ./scripts/inject-client-id.js && npm run build",
+    "prepublishOnly": "tsx ./scripts/inject-client-id.ts && npm run build",
     "postpublish": "node ./scripts/restore-client-id.js",
     "lint": "biome ci . && tsc --noEmit",
+    "pretest": "npm run build",
     "test": "vitest run",
     "format": "biome check --write ."
   },
@@ -47,6 +48,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^2.5.1",
+    "@modelcontextprotocol/sdk": "^1.29.0",
     "@tsconfig/node22": "^22.0.5",
     "@types/node": "^25.9.3",
     "tsx": "^4.22.4",
