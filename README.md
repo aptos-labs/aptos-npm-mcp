@@ -21,6 +21,7 @@ To be able to make [Geomi](https://geomi.dev/) actions like managing api keys, e
 
 - [Cursor](./integration_guides/cursor.md)
 - [Claude Code](./integration_guides/claude_code.md)
+- [Codex](./integration_guides/codex.md)
 
 ### Start vibe coding.
 
