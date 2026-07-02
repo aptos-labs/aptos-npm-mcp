@@ -1,16 +1,14 @@
 import { z } from "zod";
-
+import { GasStation } from "../../services/GasStation.js";
 import { Geomi } from "../../services/Geomi.js";
 import { recordTelemetry } from "../../utils/telemetry.js";
 import {
   CreateApiResourceApplicationToolScheme,
   CreateGasStationApplicationToolScheme,
   DeleteApplicationToolScheme,
-  getApplicationsToolScheme,
-  UpdateApplicationNameToolScheme,
   toApiFrontendArgs,
+  UpdateApplicationNameToolScheme,
 } from "../types/organization.js";
-import { GasStation } from "../../services/GasStation.js";
 
 /**
  * Tool to get all applications for your Geomi Organization.
@@ -19,7 +17,7 @@ export const getApplicationsTool = {
   description: `Get your Geomi Organizations with their projects and applications and the API Keys. Geomi is the essential toolkit for Aptos developers. Api Keys are secret keys so it is important to keep them safe and secure.
     To get the full node api keys, you need to get the Applications with a serviceType of "Api".
     To get the gas station api keys, you need to get the Applications with a serviceType of "Gs".`,
-  execute: async (args: Record<string, never>, context: any) => {
+  execute: async (_args: Record<string, never>, context: any) => {
     try {
       await recordTelemetry({ action: "get_applications" }, context);
       const geomi = new Geomi(context);
@@ -47,12 +45,12 @@ export const createApiResourceApplicationTool = {
       organization_id: string;
       project_id: string;
     },
-    context: any
+    context: any,
   ) => {
     try {
       await recordTelemetry(
         { action: "create_api_resource_application" },
-        context
+        context,
       );
       const geomi = new Geomi(context);
       const application = await geomi.createApplication({
@@ -91,14 +89,14 @@ export const createGasStationApplicationTool = {
       organization_id: string;
       project_id: string;
     },
-    context: any
+    context: any,
   ) => {
     const geomi = new Geomi(context);
     let applicationId: string | null = null;
     try {
       await recordTelemetry(
         { action: "create_gas_station_application" },
-        context
+        context,
       );
       // Create the application
       const application = await geomi.createApplication({
@@ -125,7 +123,7 @@ export const createGasStationApplicationTool = {
 
       const gasStationService = new GasStation(
         context,
-        args.network as "testnet" | "mainnet"
+        args.network as "testnet" | "mainnet",
       );
 
       // Create the gas station
@@ -177,7 +175,7 @@ export const deleteApplicationTool = {
       organization_id: string;
       project_id: string;
     },
-    context: any
+    context: any,
   ) => {
     try {
       await recordTelemetry({ action: "delete_application" }, context);
@@ -209,7 +207,7 @@ export const updateApplicationNameTool = {
       organization_id: string;
       project_id: string;
     },
-    context: any
+    context: any,
   ) => {
     try {
       await recordTelemetry({ action: "update_application_name" }, context);

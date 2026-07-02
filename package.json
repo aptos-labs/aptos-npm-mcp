@@ -36,9 +36,9 @@
     "dev": "npm run build && fastmcp dev src/server.ts",
     "prepublishOnly": "node ./scripts/inject-client-id.js && npm run build",
     "postpublish": "node ./scripts/restore-client-id.js",
-    "lint": "prettier --check . && eslint . && tsc --noEmit",
+    "lint": "biome ci . && tsc --noEmit",
     "test": "vitest run",
-    "format": "prettier --write . && eslint --fix ."
+    "format": "biome check --write ."
   },
   "dependencies": {
     "@aptos-labs/api-gateway-admin-api-client": "^4.2.0",
@@ -47,16 +47,11 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
-    "@eslint/js": "^10.0.1",
+    "@biomejs/biome": "^2.5.1",
     "@tsconfig/node22": "^22.0.5",
     "@types/node": "^25.9.3",
-    "eslint": "^10.6.0",
-    "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-perfectionist": "^5.9.1",
-    "prettier": "^3.9.4",
     "tsx": "^4.22.4",
     "typescript": "^6.0.3",
-    "typescript-eslint": "^8.62.0",
     "vitest": "^4.1.9"
   },
   "overrides": {

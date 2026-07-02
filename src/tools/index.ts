@@ -1,4 +1,4 @@
-import { FastMCP } from "fastmcp";
+import type { FastMCP } from "fastmcp";
 
 import { registerGeomiTools } from "./geomi/index.js";
 

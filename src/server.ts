@@ -130,7 +130,7 @@ async function main() {
       filename: z
         .string()
         .describe(
-          "Exact filename of the resource (e.g., 'how_to_add_wallet_connection', 'how_to_config_a_full_node_api_key_in_a_dapp', 'how_to_integrate_fungible_asset')"
+          "Exact filename of the resource (e.g., 'how_to_add_wallet_connection', 'how_to_config_a_full_node_api_key_in_a_dapp', 'how_to_integrate_fungible_asset')",
         ),
     }),
   });
@@ -140,7 +140,7 @@ async function main() {
     description:
       "PRIMARY PROMPT: Use this as the main system prompt when building any Aptos dApp. Sets up mandatory MCP consultation workflow and prevents outdated knowledge usage.",
     parameters: z.object({}),
-    execute: async (args, context) => {
+    execute: async (_args, _context) => {
       return {
         type: "text",
         text: `You are a helpful assistant that can help with building a full-stack end-to-end dapp on Aptos.
@@ -172,7 +172,7 @@ Remember: It's better to over-consult MCP than to implement outdated patterns!`,
     description:
       "MID-DEVELOPMENT REMINDER: Use this prompt when you notice the conversation has gone few exchanges without using MCP tools, or when implementing new Aptos features to reinforce MCP consultation habits.",
     parameters: z.object({}),
-    execute: async (args, context) => {
+    execute: async (_args, _context) => {
       return {
         type: "text",
         text: `APTOS MCP REMINDER PROMPT
@@ -212,7 +212,7 @@ Remember: Always verify your approach with current Aptos best practices from MCP
     description:
       "ERROR RECOVERY PROMPT: Use this immediately when encountering Aptos-related errors, stuck in debugging loops, or when about to try generic blockchain solutions. Redirects to MCP-first debugging approach.",
     parameters: z.object({}),
-    execute: async (args, context) => {
+    execute: async (_args, _context) => {
       return {
         type: "text",
         text: `APTOS DEBUGGING HELPER

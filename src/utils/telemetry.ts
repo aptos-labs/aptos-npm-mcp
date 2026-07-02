@@ -1,6 +1,6 @@
-import { Context } from "fastmcp";
 import { randomUUID } from "node:crypto";
 import os from "node:os";
+import type { Context } from "fastmcp";
 
 import { config } from "../config.js";
 

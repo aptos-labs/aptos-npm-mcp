@@ -1,7 +1,7 @@
-import * as fs from "fs";
-import { readFile } from "fs/promises";
-import { basename, dirname, extname, join as pathJoin } from "path";
-import { fileURLToPath } from "url";
+import * as fs from "node:fs";
+import { readFile } from "node:fs/promises";
+import { basename, dirname, extname, join as pathJoin } from "node:path";
+import { fileURLToPath } from "node:url";
 
 // Get __dirname equivalent in ES modules
 const __filename = fileURLToPath(import.meta.url);
@@ -27,7 +27,7 @@ export const getAvailableHowToResources = () => {
  * Helper function to read all markdown files from multiple directories
  */
 export async function readAllMarkdownFromDirectories(
-  dirNames: string[]
+  dirNames: string[],
 ): Promise<string> {
   let combinedContent = "";
 
@@ -47,7 +47,7 @@ export async function readAllMarkdownFromDirectories(
  * Helper function to read all markdown files from a directory
  */
 export async function readAllMarkdownFromDirectory(
-  dirPath: string
+  dirPath: string,
 ): Promise<string> {
   let content = "";
 
@@ -58,14 +58,14 @@ export async function readAllMarkdownFromDirectory(
 
     const files = fs.readdirSync(dirPath);
     const markdownFiles = files.filter(
-      (file: string) => extname(file).toLowerCase() === ".md"
+      (file: string) => extname(file).toLowerCase() === ".md",
     );
 
     for (const file of markdownFiles) {
       const filePath = pathJoin(dirPath, file);
       try {
         const fileContent = await readFile(filePath, "utf-8");
-        content += fileContent + "\n\n---\n\n";
+        content += `${fileContent}\n\n---\n\n`;
       } catch (error) {
         console.error(`Error reading file ${filePath}:`, error);
         content += `Error reading file: ${file}\n\n---\n\n`;
@@ -84,7 +84,7 @@ export async function readAllMarkdownFromDirectory(
  */
 export async function readMarkdownFromDirectory(
   dirName: string,
-  fileName: string
+  fileName: string,
 ): Promise<string> {
   try {
     const dirPath = pathJoin(resourcesDir, dirName);
