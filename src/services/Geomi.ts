@@ -12,11 +12,10 @@ import type { Context } from "fastmcp";
 import { config } from "../config.js";
 
 export class Geomi {
-  protected readonly context: Context<any>;
   protected readonly headers: Record<string, string>;
   private readonly adminUrl: string;
 
-  constructor(context: Context<any>) {
+  constructor(_context: Context<any>) {
     if (!config.geomi.botKey) {
       throw new Error(
         `APTOS_BOT_KEY is not set. To generate a Bot Key: 
@@ -32,7 +31,6 @@ export class Geomi {
       Authorization: `Bearer ${config.geomi.botKey}`,
       "x-is-aptos-bot": "true",
     };
-    this.context = context;
   }
 
   /**

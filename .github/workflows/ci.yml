@@ -12,7 +12,7 @@ concurrency:
 
 jobs:
   ci:
-    name: Build and test
+    name: Lint, test, and build
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -30,8 +30,8 @@ jobs:
       - name: Lint
         run: npm run lint
 
-      - name: Test
-        run: npm run test -- --passWithNoTests
-
       - name: Build
         run: npm run build
+
+      - name: Test
+        run: npm run test

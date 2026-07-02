@@ -2,11 +2,10 @@ import type { Context } from "fastmcp";
 import { config } from "../config.js";
 
 export class GasStation {
-  protected readonly context: Context<any>;
   protected readonly headers: Record<string, string>;
   private readonly gasStationEndpoint: string;
 
-  constructor(context: Context<any>, network: "testnet" | "mainnet") {
+  constructor(_context: Context<any>, network: "testnet" | "mainnet") {
     if (!config.geomi.botKey) {
       throw new Error(
         `APTOS_BOT_KEY is not set. To generate a Bot Key: 
@@ -26,7 +25,6 @@ export class GasStation {
       "x-is-aptos-bot": "true",
       "Content-Type": "application/json",
     };
-    this.context = context;
   }
 
   async createGasStation({

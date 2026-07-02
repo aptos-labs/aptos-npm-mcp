@@ -19,5 +19,6 @@
       "ESNext"
     ]
   },
-  "include": ["src/**/*"]
+  "include": ["src/**/*"],
+  "exclude": ["src/**/*.test.ts", "src/**/*.smoke.test.ts"]
 }
