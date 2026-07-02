@@ -50,10 +50,10 @@ I'm using Aptos MCP version 0.0.2.
 
 ## Alternative: Using JSON configuration
 
-If you encounter issues with the CLI approach, you can use the JSON method:
+If you encounter issues with the CLI approach, you can use the JSON method to install it to the folder you are in:
 
 ```bash
-claude mcp add-json local '{"aptos-mcp": {"command": "npx", "args": ["-y", "@aptos-labs/aptos-mcp"], "type": "stdio", "env": {"APTOS_BOT_KEY": "<your_bot_api_key>"}}}'
+claude mcp add-json aptos-mcp '{"command": "npx", "args": ["-y", "@aptos-labs/aptos-mcp"], "type": "stdio", "env": {"APTOS_BOT_KEY": "<your_bot_api_key>"}}'
 ```
 
 ## Troubleshooting
